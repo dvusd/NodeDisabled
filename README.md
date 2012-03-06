@@ -1,10 +1,6 @@
 NodeDisabled
 ============
 
-Extension to the RowExpander UX from ExtJS that utilizes the column header to expand/collapse all rows.
+A plugin that provides the ability to visually indicate to the user that a node is disabled.
 
 ExtJS 4.1 Compatible
-
-Read the [Forum] post.
-
-[Forum]: http://www.sencha.com/forum/showthread.php?184540-RowExpander-including-expand-collapse-all-via-header&p=746066
