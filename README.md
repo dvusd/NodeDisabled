@@ -1,6 +1,6 @@
 NodeDisabled
 ============
 
-A plugin that provides the ability to visually indicate to the user that a node is disabled by shading the node.
+A plugin that augments a node to visually indicate to the user that it is disabled.
 
 ExtJS 4.1 Compatible
