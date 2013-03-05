@@ -23,7 +23,9 @@
         });
         
  * 
- * @author Phil Crawford
+ * @author $Author: pscrawford $
+ * @revision $Rev: 13458 $
+ * @date $Date: 2013-02-20 14:04:38 -0700 (Wed, 20 Feb 2013) $
  * @license Licensed under the terms of the Open Source [LGPL 3.0 license](http://www.gnu.org/licenses/lgpl.html).  Commercial use is permitted to the extent that the code/component(s) do NOT become part of another Open Source or Commercially licensed development library or toolkit without explicit permission.
  * @version 0.3 (February 2, 2012) Intercept 'onCheckChange' to cancel the event instead of overriding.
  * @constructor
@@ -84,7 +86,7 @@ Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
         });
         
         if (me.preventSelection){
-            tree.getSelectionModel().on('beforeselect',me.onBeforeNodeSelect,me);
+            me.mon(tree.getSelectionModel(),'beforeselect',me.onBeforeNodeSelect,me);
         }
     }, // eof init
     
