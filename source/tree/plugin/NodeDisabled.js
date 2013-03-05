@@ -7,14 +7,15 @@
  * - If the view already defines a getRowClass function, the original function will be called before this plugin.
  * - An Ext.data.Model must be defined for the store that includes the 'disabled' field.
         Ext.define('MyTreeModel', {
-            extend: 'Ext.data.Model'
-            ,fields: [
+            extend: 'Ext.data.Model',
+            fields: [
                 {name: 'disabled', type:'bool', defaultValue:false}
                 ...
             ]
         });
  * 
  * Example usage:
+        @example
         var tree = Ext.create('Ext.tree.Panel',{
             plugins: [{
                 ptype: 'dvp_nodedisabled'
@@ -35,6 +36,9 @@ Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
     alias: 'plugin.dvp_nodedisabled',
     extend: 'Ext.AbstractPlugin',
     
+    mixins: {
+        observable: 'Ext.util.Observable'
+    },
     
     //configurables
     /**
@@ -49,6 +53,13 @@ Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
     preventSelection: true,
     
     //properties
+    
+    //private
+    constructor: function(){
+        this.callParent(arguments);
+        // Dont pass the config so that it is not applied to 'this' again
+        this.mixins.observable.constructor.call(this);
+    },//eof constructor
     
     /**
      * @private
@@ -88,7 +99,17 @@ Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
         if (me.preventSelection){
             me.mon(tree.getSelectionModel(),'beforeselect',me.onBeforeNodeSelect,me);
         }
+        
+        tree.on('destroy', me.destroy, me, {single: true});
     }, // eof init
+    
+    /**
+     * Destroy the plugin.  Called automatically when the component is destroyed.
+     */
+    destroy: function() {
+        this.callParent(arguments);
+        this.clearListeners();
+    }, //eof destroy
     
     /**
      * Returns a properly typed result.
