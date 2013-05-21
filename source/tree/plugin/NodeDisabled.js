@@ -67,7 +67,7 @@ Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
      */
     init: function(tree) {
         var me = this,
-            view = tree.getView(),
+            view = ( tree.is("treeview") )? tree : tree.getView(),
             origFn,
             origScope;
         
