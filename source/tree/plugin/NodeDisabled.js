@@ -3,7 +3,7 @@
  * 
  * Notes:
  * 
- * - Compatible with Ext 4.x
+ * - Compatible with Ext 5.x
  * - If the view already defines a getRowClass function, the original function will be called before this plugin.
  * - An Ext.data.Model must be defined for the store that includes the 'disabled' field.
         Ext.define('MyTreeModel', {
@@ -34,7 +34,7 @@
  */
 Ext.define('Ext.ux.tree.plugin.NodeDisabled', {
     alias: 'plugin.dvp_nodedisabled',
-    extend: 'Ext.AbstractPlugin',
+    extend: 'Ext.plugin.Abstract',
     
     mixins: {
         observable: 'Ext.util.Observable'
